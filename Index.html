@@ -1,27 +1,309 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gorav Attar | Portfolio</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Premium Sticky Navbar, Hero, Grid Projects & Footer</title>
+  <style>
+    /* ==========================================
+       1. GLOBAL RESETS & STYLES
+       ========================================== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-<style>
+    body {
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background-color: #09090e;
+      color: #ffffff;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
 
-/* Reset */
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial, Helvetica, sans-serif;
-}
+    /* ==========================================
+       2. STICKY NAVIGATION BAR
+       ========================================== */
+    .navbar {
+      position: sticky;
+      top: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(9, 9, 14, 0.85);
+      backdrop-filter: blur(12px);
+      padding: 1.2rem 5%;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    }
 
-html{
-    scroll-behavior:smooth;
-}
+    .logo {
+      font-size: 1.6rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+      color: #a855f7;
+      text-transform: uppercase;
+    }
 
-/* Body */
-body{
-    background:linear-gradient(135deg,#14002d,#22004d,#3d0c75,#0d47a1);
-    color:#fff;
-}
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2.5rem;
+    }
+
+    .nav-links a {
+      color: #cbd5e1;
+      text-decoration: none;
+      font-size: 1.05rem;
+      font-weight: 500;
+      position: relative;
+      transition: color 0.3s ease;
+      padding: 0.5rem 0;
+    }
+
+    .nav-links a:hover {
+      color: #3b82f6;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: #3b82f6;
+      transition: width 0.3s ease;
+    }
     
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    @media (max-width: 600px) {
+      .nav-links {
+        display: none;
+      }
+    }
+
+    /* ==========================================
+       3. FULL-SCREEN HERO SECTION
+       ========================================== */
+    .hero-container {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 2rem;
+      background: radial-gradient(circle at center, #1e1b4b 0%, #090514 100%);
+    }
+
+    .hero-container h1 {
+      font-size: 5rem;
+      font-weight: 800;
+      letter-spacing: -1px;
+      margin-bottom: 1.2rem;
+      background: linear-gradient(to right, #a855f7, #3b82f6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-container p {
+      font-size: 1.3rem;
+      color: #94a3b8;
+      max-width: 650px;
+      margin-bottom: 2.5rem;
+      line-height: 1.6;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      text-decoration: none;
+      background: linear-gradient(135deg, #a855f7, #6366f1);
+      color: #ffffff;
+      padding: 1rem 2.8rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border-radius: 50px;
+      box-shadow: 0 4px 20px rgba(168, 85, 247, 0.4);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 30px rgba(99, 102, 241, 0.6);
+      background: linear-gradient(135deg, #6366f1, #a855f7);
+    }
+
+    @media (max-width: 600px) {
+      .hero-container h1 {
+        font-size: 3rem;
+      }
+    }
+
+    /* ==========================================
+       4. PROJECTS SECTION (CSS Grid)
+       ========================================== */
+    .projects-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 6rem 2rem;
+    }
+
+    .projects-section h2 {
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 3rem;
+      position: relative;
+    }
+
+    /* Target layout criteria using grid template */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    /* Individual Card Styles */
+    .project-card {
+      background: #111119;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      padding: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(168, 85, 247, 0.4);
+    }
+
+    /* First Featured Card spanning 2 rows */
+    .featured-card {
+      grid-row: span 2;
+      background: linear-gradient(135deg, #151026, #111119);
+      border: 1px solid rgba(168, 85, 247, 0.2);
+    }
+
+    .project-card h3 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      color: #ffffff;
+    }
+
+    .featured-card h3 {
+      font-size: 2.2rem;
+      background: linear-gradient(to right, #ffffff, #a855f7);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .project-card p {
+      color: #94a3b8;
+      font-size: 1.05rem;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+
+    .project-card a {
+      color: #3b82f6;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      display: inline-block;
+      align-self: flex-start;
+      transition: color 0.3s ease;
+    }
+
+    .project-card a:hover {
+      color: #a855f7;
+    }
+
+    /* Collapse grid to single column below 768px */
+    @media (max-width: 768px) {
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .featured-card {
+        grid-row: auto; /* Resets row spanning on mobile */
+      }
+
+      .featured-card h3 {
+        font-size: 1.8rem;
+      }
+    }
+
+    /* ==========================================
+       5. FOOTER (Centered via Flexbox)
+       ========================================== */
+    .footer {
+      background-color: #050508; /* Dark Background */
+      padding: 2.5rem 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      display: flex;
+      justify-content: center; /* Centered Horizontally */
+      align-items: center;     /* Centered Vertically */
+    }
+
+    .footer p {
+      color: #64748b;
+      font-size: 0.95rem;
+      letter-spacing: 0.5px;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="logo">Gemini</div>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#projects">Profile</a></li>
+      <li><a href="#name">Name</a></li>
+    </ul>
+  </nav>
+
+  <header id="home" class="hero-container">
+    <h1>Gemini</h1>
+    <p>I build beautiful, high-performance web experiences with modern design architectures.</p>
+    <a href="#projects" class="cta-btn">Explore Portfolio</a>
+  </header>
+
+  <section id="projects" class="projects-section">
+    <h2>Featured Projects</h2>
+    
+    <div class="projects-grid">
+      <div class="project-card featured-card">
+        <h3>AI Portfolio Website</h3>
+        <p>A premium cinematic portfolio platform utilizing automated, custom CSS layouts and smart responsive themes built to impress clients.</p>
+        <a href="#view">View Project &rarr;</a>
+      </div>
+
+      <div class="project-card">
+        <h3>Weather Analytics App</h3>
+        <p>Real-time climate tracking application providing deep historical metrics and data visualizations across global servers.</p>
+        <a href="#view">View Project &rarr;</a>
+      </div>
+
+      <div class="project-card">
+        <h3>Minimalist To-Do List</h3>
+        <p>A clean, lightweight workspace engine optimized for productivity tracking with local data caching features.</p>
+        <a href="#view">View Project &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <footer id="name" class="footer">
+    <p>&copy; 2026 Gemini. All Rights Reserved.</p>
+  </footer>
+
+</body>
+    </html>    
